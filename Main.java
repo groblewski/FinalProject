@@ -41,13 +41,7 @@ public class Main extends Application {
 		rows.get(2).getChildren().add(makeTeamBoxLeft());
 		
 		//row4
-		VBox winners = new VBox();
-		winners.getChildren().addAll(new Label("Winners"), new Label("1st Place"), new Label("Team"), 
-				new Label("2nd Place"), new Label("Team"),
-				new Label("3rd Place"), new Label("Team"));
-		winners.setAlignment(Pos.CENTER);
-		winners.setSpacing(1);
-		rows.get(3).getChildren().add(winners);
+		rows.get(3).getChildren().addAll(makeTeamBoxChampionship());
 		
 		//row5
 		rows.get(4).getChildren().add(makeTeamBoxRight());
@@ -62,8 +56,27 @@ public class Main extends Application {
 		
 		//adding rows to gpanes
 		for(int i = 0; i < rows.size(); i++) {
-			gPane.add(rows.get(i), i, 0);
+			gPane.add(rows.get(i), i, 1);
 		}
+		
+		//Have yet to decide how to deal with displaying the winners
+//		VBox winners = new VBox();
+//		HBox placesAndTeams= new HBox();
+//		VBox places = new VBox();
+//		places.setAlignment(Pos.CENTER);
+//		VBox winningTeams = new VBox();
+//		winningTeams.setAlignment(Pos.CENTER);
+//		
+//		places.getChildren().addAll(new Label("1st Place:"), new Label("2nd Place:"), new Label("3rd Place:"));
+//		winningTeams.getChildren().addAll( new Label("Team"),  new Label("Team"), new Label("Team"));
+//		
+//		placesAndTeams.getChildren().addAll(places, winningTeams);
+//		winners.getChildren().addAll(new Label("Winners"), placesAndTeams); 
+//		winners.setAlignment(Pos.CENTER);
+//		winners.setSpacing(1);
+//		
+//		gPane.add(winners, 3, 0);
+
 		
 		Scene scene = new Scene(gPane, Color.BLACK);
 		primaryStage.setScene(scene);
@@ -121,6 +134,23 @@ public HBox makeTeamBoxRight() {
 		
 		return hb;
 	}
+
+public VBox makeTeamBoxChampionship() {
+	
+	VBox vb = new VBox();
+	vb.setAlignment(Pos.CENTER);
+	vb.setPadding(new Insets(10,10,10,10));
+	
+
+	TextField t1 = new TextField("Score");
+	t1.setPrefColumnCount(1);
+	TextField t2 = new TextField("Score");
+	t2.setPrefColumnCount(1);
+
+	vb.getChildren().addAll(new Label("Team1"), t1, new Label("Team2"), t2, new Button("Submit"));
+	
+	return vb;
+}
 	
 	public static void main(String[] args) {
 		launch(args);
