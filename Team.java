@@ -7,13 +7,13 @@ public class Team {
 	private int previousScore;
 	
 	
-	Team() {
+	public Team() {
 		this.seed = 0;
 		this.name = null;
 		this.previousScore = 0;
 	}
 	
-	Team(String name, int seed){
+	public Team(String name, int seed){
 		this.seed = seed;
 		this.name = name;
 		this.previousScore = 0;
