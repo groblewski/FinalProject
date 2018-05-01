@@ -18,9 +18,35 @@ import javafx.scene.paint.Color;
 
 
 public class Main extends Application {
+	
+	
+	public Game championshipGame;
+	
+	public Game semiFinalGameLeft;
+	public Game semiFinalGameRight;
+	
+	public Game quarterFinalGameLeftOne = new Game();
+	public Game quarterFinalGameLeftTwo;
+	public Game quarterFinalGameRightOne;
+	public Game quarterFinalGameRightTwo;
+	
+	public Game firstRoundGameLeftOne;
+	public Game firstRoundGameLeftTwo;
+	public Game firstRoundGameLeftThree;
+	public Game firstRoundGameLeftFour;
+	public Game firstRoundGameRightOne;
+	public Game firstRoundGameRightTwo;
+	public Game firstRoundGameRightThree;
+	public Game firstRoundGameRightFour;
+	
+	
+	
+	
 	@Override
 	public void start(Stage primaryStage) {
 		List <Team>teams = new ArrayList();
+		
+		
 		
 		teams.add(new Team("Brian", 1));
 		teams.add(new Team("Jared", 2));
@@ -38,22 +64,9 @@ public class Main extends Application {
 		teams.add(new Team("Paul", 6));
 		teams.add(new Team("David", 7));
 		teams.add(new Team("Lillian", 8));
+	
 		
-		Game championshipGame;
-		Game semiFinalGameLeft;
-		Game semiFinalGameRight;
-		Game quarterFinalGameLeftOne;
-		Game quarterFinalGameLeftTwo;
-		Game quarterFinalGameRightOne;
-		Game quarterFinalGameRightTwo;
-		Game firstRoundGameLeftOne;
-		Game firstRoundGameLeftTwo;
-		Game firstRoundGameLeftThree;
-		Game firstRoundGameLeftFour;
-		Game firstRoundGameRightOne;
-		Game firstRoundGameRightTwo;
-		Game firstRoundGameRightThree;
-		Game firstRoundGameRightFour;
+		
 		
 		GridPane gPane = new GridPane();
 		gPane.setAlignment(Pos.CENTER);
@@ -83,22 +96,35 @@ public class Main extends Application {
 					quarterFinalGameRightOne = new Game();
 					quarterFinalGameRightTwo = new Game();
 					if(teams.size() > 8) {
+						
+					
+						
+						firstRoundGameLeftOne = new Game(teams.get(0), teams.get(15), "firstRoundGameLeftOne");
+						firstRoundGameLeftTwo = new Game(teams.get(2), teams.get(13), "firstRoundGameLeftTwo");
+				
+						firstRoundGameLeftThree = new Game(teams.get(4), teams.get(11), "firstRoundGameLeftThree");
+						firstRoundGameLeftFour = new Game(teams.get(6), teams.get(9), "firstRoundGameLeftFour");
+						firstRoundGameRightOne = new Game(teams.get(1), teams.get(14), "firstRoundGameRightOne");
+						firstRoundGameRightTwo = new Game(teams.get(3), teams.get(12), "firstRoundGameRightTwo");
+						firstRoundGameRightThree = new Game(teams.get(5), teams.get(10), "firstRoundGameRightThree");
+						firstRoundGameRightFour = new Game(teams.get(7), teams.get(8), "firstRoundGameRightFour");
+						
+						
+	
+						
 						rows.get(1).getChildren().addAll(quarterFinalGameLeftOne.getBox(),
 								quarterFinalGameLeftTwo.getBox());
 						rows.get(5).getChildren().addAll(quarterFinalGameRightOne.getBox(),
 								quarterFinalGameRightTwo.getBox());
-						firstRoundGameLeftOne = new Game(teams.get(0), teams.get(15));
-						firstRoundGameLeftTwo = new Game(teams.get(2), teams.get(13));
-						firstRoundGameLeftThree = new Game(teams.get(4), teams.get(11));
-						firstRoundGameLeftFour = new Game(teams.get(6), teams.get(9));
-						firstRoundGameRightOne = new Game(teams.get(1), teams.get(14));
-						firstRoundGameRightTwo = new Game(teams.get(3), teams.get(12));
-						firstRoundGameRightThree = new Game(teams.get(5), teams.get(10));
-						firstRoundGameRightFour = new Game(teams.get(7), teams.get(8));
+						
+						
 						rows.get(0).getChildren().addAll(firstRoundGameLeftOne.getBox(), firstRoundGameLeftTwo.getBox(),
 								firstRoundGameLeftThree.getBox(),firstRoundGameLeftFour.getBox());
 						rows.get(7).getChildren().addAll(firstRoundGameRightOne.getBox(), firstRoundGameRightTwo.getBox(),
 								firstRoundGameRightThree.getBox(),firstRoundGameRightFour.getBox());
+						
+						
+						
 					} else {
 						quarterFinalGameLeftOne.setLabels(teams.get(0), teams.get(7));
 						quarterFinalGameRightOne.setLabels(teams.get(1), teams.get(6));
@@ -179,6 +205,10 @@ public class Main extends Application {
 
 	}
 	
+	public void updateGames (Team winner) {
+		
+	}
+	
 	public HBox makeTeamBoxLeft() {
 		
 		HBox hb = new HBox();
@@ -189,15 +219,37 @@ public class Main extends Application {
 		labels.setAlignment(Pos.TOP_CENTER);
 		labels.setSpacing(10);
 		labels.setPadding(new Insets(5, 0, 0, 0));
+		
+		
+		
+		
 		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
+		
+		
+		//newbie.setOnAction(e -> {
+//		Integer txt1 = Integer.valueOf(t1.getText());
+//		Integer txt2 = Integer.valueOf(t2.getText());
+	//	
+//		if (txt1 > txt2 )
+//			System.out.println(txt1);
+//		else {
+//			System.out.println(txt2);
+//		}
+	//});
+
 		
 		VBox scores = new VBox();
 		TextField t1 = new TextField("Score");
 		t1.setPrefColumnCount(1);
 		TextField t2 = new TextField("Score");
 		t2.setPrefColumnCount(1);
-		scores.getChildren().addAll(t1, t2, new Button("Submit"));
-
+		
+	
+		
+		scores.getChildren().addAll(t1, t2, new Button("Useless"));
+		
+		
+		
 		
 		hb.getChildren().add(labels);
 		hb.getChildren().add(scores);
@@ -242,7 +294,7 @@ public VBox makeTeamBoxChampionship() {
 	TextField t2 = new TextField("Score");
 	t2.setPrefColumnCount(1);
 
-	vb.getChildren().addAll(new Label("Team1"), t1, new Label("Team2"), t2, new Button("Submit"));
+	vb.getChildren().addAll(new Label("Team1"), t1, new Label("Team2"), t2, new Button("SAD"));
 	
 	return vb;
 }
