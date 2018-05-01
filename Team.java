@@ -5,6 +5,7 @@ public class Team {
 	private int seed;
 	private String name;
 	private int previousScore;
+	private int scoreTeam;
 	
 	
 	public Team() {
@@ -18,6 +19,16 @@ public class Team {
 		this.name = name;
 		this.previousScore = 0;
 	}
+	
+	
+	public void setWinner(int score) {
+		this.scoreTeam = score;
+	}
+	
+	public int getWinner() {
+		return scoreTeam;
+	}
+	
 	
 	public int getSeed() {
 		return this.seed;
