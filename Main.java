@@ -1,7 +1,12 @@
 package application;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -19,6 +24,7 @@ import javafx.scene.paint.Color;
 
 public class Main extends Application {
 	
+	static ArrayList<String> teamList;
 	
 	public Game championshipGame;
 	
@@ -298,8 +304,63 @@ public VBox makeTeamBoxChampionship() {
 	
 	return vb;
 }
+public static Stream<String> getWordStream(String filepath) throws IOException {
 	
+	Stream <String> stream = Files.lines(Paths.get(filepath));
+	stream = stream.filter(str->str.trim().length() > 0);
+	stream = stream.map(String::trim);
+	stream = stream.map(String::toUpperCase);
+	
+	return stream;
+}	
 	public static void main(String[] args) {
-		launch(args);
+	
+	Stream <String> stream = null;
+	
+	if (0 == args.length) {
+		System.out.println("Amount of arguments found: " + args.length);
+		System.exit(-1);
+	}
+	
+	else {
+		
+	String fileName = args[0];
+	teamList = new ArrayList<String>();
+	
+	try {
+		stream = Main.getWordStream(fileName);
+	}
+	
+	catch (IOException e) {
+		System.out.println("Unable to find the file: " + fileName);
+		System.exit(-1);
+	}
+	
+	teamList = (ArrayList<String>) stream.collect(Collectors.toList());
+	System.out.print(teamList);
+	launch(args);
 	}
 }
+}
+
+//public static void main(String[] args) {
+//	
+//	Stream <String> stream = null;
+//	String fileName = file path on your computer to teamList.txt
+//	teamList = new ArrayList<String>();
+//	
+//	try {
+//		stream = Main.getWordStream(fileName);
+//	}
+//	
+//	catch (IOException e) {
+//		System.out.println("Unable to find the file: " + fileName);
+//		System.exit(-1);
+//	}
+//	
+//	teamList = (ArrayList<String>) stream.collect(Collectors.toList());
+//	System.out.print(teamList);
+//	launch(args);
+//	}
+//}
+//}
