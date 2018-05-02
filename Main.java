@@ -52,24 +52,28 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		List <Team>teams = new ArrayList();
 		
+		for(int i=0; i < teamList.size(); i++) {
+			teams.add(new Team(teamList.get(i)));
+		}
 		
-		
-		teams.add(new Team("Brian", 1));
-		teams.add(new Team("Jared", 2));
-		teams.add(new Team("Brennan", 3));
-		teams.add(new Team("Mustafa", 4));
-		teams.add(new Team("Caitlyn", 5));
-		teams.add(new Team("Jacob", 6));
-		teams.add(new Team("Phyllis", 7));
-		teams.add(new Team("Michael", 8));
-		teams.add(new Team("Lisa", 1));
-		teams.add(new Team("Mary-Ellen", 2));
-		teams.add(new Team("Mark", 3));
-		teams.add(new Team("Steve", 4));
-		teams.add(new Team("Corky", 5));
-		teams.add(new Team("Paul", 6));
-		teams.add(new Team("David", 7));
-		teams.add(new Team("Lillian", 8));
+//		
+//		
+//		teams.add(new Team("Brian", 1));
+//		teams.add(new Team("Jared", 2));
+//		teams.add(new Team("Brennan", 3));
+//		teams.add(new Team("Mustafa", 4));
+//		teams.add(new Team("Caitlyn", 5));
+//		teams.add(new Team("Jacob", 6));
+//		teams.add(new Team("Phyllis", 7));
+//		teams.add(new Team("Michael", 8));
+//		teams.add(new Team("Lisa", 1));
+//		teams.add(new Team("Mary-Ellen", 2));
+//		teams.add(new Team("Mark", 3));
+//		teams.add(new Team("Steve", 4));
+//		teams.add(new Team("Corky", 5));
+//		teams.add(new Team("Paul", 6));
+//		teams.add(new Team("David", 7));
+//		teams.add(new Team("Lillian", 8));
 	
 		
 		
@@ -155,54 +159,11 @@ public class Main extends Application {
 			
 		}
 		
-//		//row 1
-		
-//		for(int i = 0; i < 4; i++) {
-//			rows.get(0).getChildren().add(makeTeamBoxLeft());
-//		}
-//		
-//		//row2
-//		rows.get(1).getChildren().addAll(makeTeamBoxLeft(), makeTeamBoxLeft());
-//		
-//		//row3
-//		rows.get(2).getChildren().add(makeTeamBoxLeft());
-//		
-//		//row4
-		//rows.get(3).getChildren().addAll(championshipGame.getBox());
-//		
-//		//row5
-//		rows.get(4).getChildren().add(makeTeamBoxRight());
-//		
-//		//row6
-//		rows.get(5).getChildren().addAll(makeTeamBoxRight(), makeTeamBoxRight());
-//		
-//		//row7
-//		for(int i = 0; i < 4; i++) {
-//			rows.get(6).getChildren().add(makeTeamBoxRight());
-//		}
-//		
+
 		//adding rows to gpanes
 		for(int i = 0; i < rows.size(); i++) {
 			gPane.add(rows.get(i), i, 1);
 		}
-		
-		//Have yet to decide how to deal with displaying the winners
-//		VBox winners = new VBox();
-//		HBox placesAndTeams= new HBox();
-//		VBox places = new VBox();
-//		places.setAlignment(Pos.CENTER);
-//		VBox winningTeams = new VBox();
-//		winningTeams.setAlignment(Pos.CENTER);
-//		
-//		places.getChildren().addAll(new Label("1st Place:"), new Label("2nd Place:"), new Label("3rd Place:"));
-//		winningTeams.getChildren().addAll( new Label("Team"),  new Label("Team"), new Label("Team"));
-//		
-//		placesAndTeams.getChildren().addAll(places, winningTeams);
-//		winners.getChildren().addAll(new Label("Winners"), placesAndTeams); 
-//		winners.setAlignment(Pos.CENTER);
-//		winners.setSpacing(1);
-//		
-//		gPane.add(winners, 3, 0);
 
 		
 		Scene scene = new Scene(gPane, Color.BLACK);
@@ -215,95 +176,95 @@ public class Main extends Application {
 		
 	}
 	
-	public HBox makeTeamBoxLeft() {
-		
-		HBox hb = new HBox();
-		hb.setAlignment(Pos.CENTER);
-		hb.setPadding(new Insets(10,10,10,10));
-		
-		VBox labels = new VBox();
-		labels.setAlignment(Pos.TOP_CENTER);
-		labels.setSpacing(10);
-		labels.setPadding(new Insets(5, 0, 0, 0));
-		
-		
-		
-		
-		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
-		
-		
-		//newbie.setOnAction(e -> {
-//		Integer txt1 = Integer.valueOf(t1.getText());
-//		Integer txt2 = Integer.valueOf(t2.getText());
-	//	
-//		if (txt1 > txt2 )
-//			System.out.println(txt1);
-//		else {
-//			System.out.println(txt2);
-//		}
-	//});
-
-		
-		VBox scores = new VBox();
-		TextField t1 = new TextField("Score");
-		t1.setPrefColumnCount(1);
-		TextField t2 = new TextField("Score");
-		t2.setPrefColumnCount(1);
-		
-	
-		
-		scores.getChildren().addAll(t1, t2, new Button("Useless"));
-		
-		
-		
-		
-		hb.getChildren().add(labels);
-		hb.getChildren().add(scores);
-		
-		return hb;
-	}
-	
-public HBox makeTeamBoxRight() {
-		
-		HBox hb = new HBox();
-		hb.setAlignment(Pos.CENTER);
-		hb.setPadding(new Insets(10,10,10,10));
-		
-		VBox labels = new VBox();
-		labels.setAlignment(Pos.TOP_CENTER);
-		labels.setSpacing(10);
-		labels.setPadding(new Insets(5, 0, 0, 0));
-		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
-		
-		VBox scores = new VBox();
-		TextField t1 = new TextField("Score");
-		t1.setPrefColumnCount(1);
-		TextField t2 = new TextField("Score");
-		t2.setPrefColumnCount(1);
-		scores.getChildren().addAll(t1, t2, new Button("Submit"));
-
-		hb.getChildren().add(scores);
-		hb.getChildren().add(labels);
-		
-		return hb;
-	}
-
-public VBox makeTeamBoxChampionship() {
-	
-	VBox vb = new VBox();
-	vb.setAlignment(Pos.CENTER);
-	vb.setPadding(new Insets(10,10,10,10));
-	
-
-	TextField t1 = new TextField("Score");
-	t1.setPrefColumnCount(1);
-	TextField t2 = new TextField("Score");
-	t2.setPrefColumnCount(1);
-
-	vb.getChildren().addAll(new Label("Team1"), t1, new Label("Team2"), t2, new Button("SAD"));
-	
-	return vb;
-}
+//	public HBox makeTeamBoxLeft() {
+//		
+//		HBox hb = new HBox();
+//		hb.setAlignment(Pos.CENTER);
+//		hb.setPadding(new Insets(10,10,10,10));
+//		
+//		VBox labels = new VBox();
+//		labels.setAlignment(Pos.TOP_CENTER);
+//		labels.setSpacing(10);
+//		labels.setPadding(new Insets(5, 0, 0, 0));
+//		
+//		
+//		
+//		
+//		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
+//		
+//		
+//		//newbie.setOnAction(e -> {
+////		Integer txt1 = Integer.valueOf(t1.getText());
+////		Integer txt2 = Integer.valueOf(t2.getText());
+//	//	
+////		if (txt1 > txt2 )
+////			System.out.println(txt1);
+////		else {
+////			System.out.println(txt2);
+////		}
+//	//});
+//
+//		
+//		VBox scores = new VBox();
+//		TextField t1 = new TextField("Score");
+//		t1.setPrefColumnCount(1);
+//		TextField t2 = new TextField("Score");
+//		t2.setPrefColumnCount(1);
+//		
+//	
+//		
+//		scores.getChildren().addAll(t1, t2, new Button("Useless"));
+//		
+//		
+//		
+//		
+//		hb.getChildren().add(labels);
+//		hb.getChildren().add(scores);
+//		
+//		return hb;
+//	}
+//	
+//public HBox makeTeamBoxRight() {
+//		
+//		HBox hb = new HBox();
+//		hb.setAlignment(Pos.CENTER);
+//		hb.setPadding(new Insets(10,10,10,10));
+//		
+//		VBox labels = new VBox();
+//		labels.setAlignment(Pos.TOP_CENTER);
+//		labels.setSpacing(10);
+//		labels.setPadding(new Insets(5, 0, 0, 0));
+//		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
+//		
+//		VBox scores = new VBox();
+//		TextField t1 = new TextField("Score");
+//		t1.setPrefColumnCount(1);
+//		TextField t2 = new TextField("Score");
+//		t2.setPrefColumnCount(1);
+//		scores.getChildren().addAll(t1, t2, new Button("Submit"));
+//
+//		hb.getChildren().add(scores);
+//		hb.getChildren().add(labels);
+//		
+//		return hb;
+//	}
+//
+//public VBox makeTeamBoxChampionship() {
+//	
+//	VBox vb = new VBox();
+//	vb.setAlignment(Pos.CENTER);
+//	vb.setPadding(new Insets(10,10,10,10));
+//	
+//
+//	TextField t1 = new TextField("Score");
+//	t1.setPrefColumnCount(1);
+//	TextField t2 = new TextField("Score");
+//	t2.setPrefColumnCount(1);
+//
+//	vb.getChildren().addAll(new Label("Team1"), t1, new Label("Team2"), t2, new Button("SAD"));
+//	
+//	return vb;
+//}
 public static Stream<String> getWordStream(String filepath) throws IOException {
 	
 	Stream <String> stream = Files.lines(Paths.get(filepath));

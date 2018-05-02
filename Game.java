@@ -39,15 +39,16 @@ public class Game {
 		lbls.setAlignment(Pos.TOP_CENTER);
 		lbls.setSpacing(10);
 		lbls.setPadding(new Insets(5, 0, 0, 0));
-		 lbl1 = new Label("TBD");
-		 lbl2 = new Label("TBD");
+		lbl1 = new Label("TBD");
+		lbl2 = new Label("TBD");
 		lbls.getChildren().addAll(lbl1,lbl2);
 		
 		VBox scores = new VBox();
+		scores.setAlignment(Pos.CENTER_RIGHT);
 		TextField t1 = new TextField("Score");
-		t1.setPrefColumnCount(1);
+		t1.setPrefColumnCount(4);
 		TextField t2 = new TextField("Score");
-		t2.setPrefColumnCount(1);
+		t2.setPrefColumnCount(4);
 		scores.getChildren().addAll(t1, t2, new Button("Submit"));
 
 		
@@ -63,8 +64,6 @@ public class Game {
 		hb.setAlignment(Pos.CENTER);
 		hb.setPadding(new Insets(10,10,10,10));
 		
-		
-		
 		labels = new VBox();
 		labels.setAlignment(Pos.TOP_CENTER);
 		labels.setSpacing(10);
@@ -72,10 +71,11 @@ public class Game {
 		labels.getChildren().addAll(new Label(teamOne.getName()),new Label(teamTwo.getName()));
 		
 		VBox scores = new VBox();
+		scores.setAlignment(Pos.CENTER_RIGHT);
 		TextField t1 = new TextField("Score");
-		t1.setPrefColumnCount(1);
+		t1.setPrefColumnCount(4);
 		TextField t2 = new TextField("Score");
-		t2.setPrefColumnCount(1);
+		t2.setPrefColumnCount(4);
 		Button newbie = new Button ("ERT");
 		scores.getChildren().addAll(t1, t2, newbie);
 
@@ -169,7 +169,7 @@ public class Game {
 	}
 	
 	public void setLabels (Team teamOne, Team teamTwo) {
-		labels.getChildren().setAll(new Label(teamOne.getName()),new Label(teamTwo.getName()));
+		lbls.getChildren().setAll(new Label(teamOne.getName()),new Label(teamTwo.getName()));
 		
 	}
 	
@@ -186,11 +186,5 @@ public class Game {
 		return hb;
 	}
 	
-//	public VBox getScores() {
-//		return scores;
-//	}
-//	
-//	public VBox getLabels() {
-//		return labels;
-//	}
+
 }
