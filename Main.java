@@ -33,20 +33,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-
 public class Main extends Application {
-	//NO NEGATIVE VALUES,
-	//NO STRINGS
-	//WHEN TIE, DELETE THE NAME
-	//increase the length of the label
-	
 	public Game championshipGame;
 	
 	public Game semiFinalGameLeft;
 	public Game semiFinalGameRight;
 	
 	public Game quarterFinalGameLeftOne ;
-	Game quarterFinalGameLeftTwo;
+	public Game quarterFinalGameLeftTwo; 
 	public Game quarterFinalGameRightOne;
 	public Game quarterFinalGameRightTwo;
 	
@@ -67,14 +61,10 @@ public class Main extends Application {
 	//String looserR
 	String looserL;
 	
-	
 	@Override
 	public void start(Stage primaryStage) {
-	
 		List <Team>teams = new ArrayList();
-		
-		
-		
+	
 		teams.add(new Team("Brian", 1));
 		teams.add(new Team("Jared", 2));
 		teams.add(new Team("Brennan", 3));
@@ -96,12 +86,13 @@ public class Main extends Application {
 		
 		ArrayList<VBox> rows = new ArrayList<VBox>();
 		
-		for(int i = 0; i < 8; i++) {
+		for (int i = 0; i < 8; i++) {
 			rows.add(new VBox());
 			rows.get(i).setAlignment(Pos.CENTER);
 		}
 		
 		if (teams.size() == 1) {
+			
 		}
 		
 		if (teams.size() > 1) {
@@ -113,16 +104,12 @@ public class Main extends Application {
 				if (teams.size() > 4) {
 					rows.get(2).getChildren().addAll(semiFinalGameLeft.getBox());
 					rows.get(4).getChildren().addAll(semiFinalGameRight.getBox());
-					
 
 					quarterFinalGameLeftOne = new Game(null, null, "TBD");
 					quarterFinalGameLeftTwo = new Game(null, null, "TBD");
 					quarterFinalGameRightOne = new Game(null, null, "TBD");
 					quarterFinalGameRightTwo = new Game(null, null, "TBD");
 					if (teams.size() > 8) {
-						
-					
-						
 						firstRoundGameLeftOne = new Game(teams.get(0), teams.get(15), "firstRoundGameLeftOne");
 						firstRoundGameLeftTwo = new Game(teams.get(2), teams.get(13), "firstRoundGameLeftTwo");
 						
@@ -131,31 +118,26 @@ public class Main extends Application {
 							public void handle(ActionEvent event) {
 								int txt1 = Integer.parseInt(firstRoundGameLeftOne.t1.getText());
 								int  txt2 = Integer.parseInt(firstRoundGameLeftOne.t2.getText());
-
 								
-							if (txt1 > txt2) {
-								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
-								quarterFinalGameLeftOne.nl.setText(firstRoundGameLeftOne.nl.getText());
-							}
-							else if (txt1 < txt2) {
-								quarterFinalGameLeftOne.nl.setText(firstRoundGameLeftOne.nl2.getText());
-							}
-							else {
+								if (txt1 > txt2) {
+									//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+									quarterFinalGameLeftOne.nl.setText(firstRoundGameLeftOne.nl.getText());
+								}
+								else if (txt1 < txt2) {
+									quarterFinalGameLeftOne.nl.setText(firstRoundGameLeftOne.nl2.getText());
+								}
+								else {
 								
-							}
-							
+								}
 							}
 						});
-						
 						
 						firstRoundGameLeftTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
-
 								int txt1 = Integer.parseInt(firstRoundGameLeftTwo.t1.getText());
 								int  txt2 = Integer.parseInt(firstRoundGameLeftTwo.t2.getText());
 
-								
 							if (txt1 > txt2) {
 								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 								quarterFinalGameLeftOne.nl2.setText(firstRoundGameLeftTwo.nl.getText());
@@ -484,7 +466,7 @@ public class Main extends Application {
 								int txt1 = Integer.parseInt(championshipGame.t1.getText());
 								int  txt2 = Integer.parseInt(championshipGame.t2.getText());//semiFinalGameRight
 								
-							if(txt1 > txt2) {	
+							if (txt1 > txt2) {	
 								//semiFinalGameRight = new Game(teamOne,null, "TBD");
 								//championshipGame.nl2.setText(semiFinalGameRight.nl.getText());								
 								String ans = "1st " + championshipGame.nl.getText();				
@@ -547,8 +529,6 @@ public class Main extends Application {
 				championshipGame.setLabels(teams.get(0), teams.get(1));
 				rows.get(3).getChildren().addAll(championshipGame.getBox());
 			}
-			
-			
 		}
 		
 //		//row 1
@@ -606,7 +586,6 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		//quarterFinalGameLeftOne.lbl1.setText("H:");
-
 	}
 
 	public HBox makeTeamBoxLeft() {
