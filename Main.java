@@ -1,3 +1,16 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   
+// Title:            Milestone 3, Final Project
+// Files:            Game.java, Main.java, Team.java, application.css
+// Semester:         CS 400, Spring 2018
+//
+// Author(s):        Brennan Fife, Brian Guth, Emma Groblewski, 
+//		     Mustafa Musabeyli, Jared Glaub
+// Lecturer's Name:  Deb Deppeler
+// Section:          001	
+//
+///////////////////////////////////////////////////////////////////////////////
+
 package application;
 
 import java.io.IOException;
@@ -45,9 +58,6 @@ public class Main extends Application {
 	public Game firstRoundGameRightThree;
 	public Game firstRoundGameRightFour;
 	
-	
-	
-	
 	@Override
 	public void start(Stage primaryStage) {
 		List <Team>teams = new ArrayList();
@@ -56,8 +66,7 @@ public class Main extends Application {
 			teams.add(new Team(teamList.get(i)));
 		}
 		
-//		
-//		
+
 //		teams.add(new Team("Brian", 1));
 //		teams.add(new Team("Jared", 2));
 //		teams.add(new Team("Brennan", 3));
@@ -75,9 +84,6 @@ public class Main extends Application {
 //		teams.add(new Team("David", 7));
 //		teams.add(new Team("Lillian", 8));
 	
-		
-		
-		
 		GridPane gPane = new GridPane();
 		gPane.setAlignment(Pos.CENTER);
 		
@@ -89,7 +95,6 @@ public class Main extends Application {
 		}
 		
 		if (teams.size() == 1) {
-			;
 		}
 		
 		if (teams.size() > 1) {
@@ -107,8 +112,6 @@ public class Main extends Application {
 					quarterFinalGameRightTwo = new Game();
 					if(teams.size() > 8) {
 						
-					
-						
 						firstRoundGameLeftOne = new Game(teams.get(0), teams.get(15), "firstRoundGameLeftOne");
 						firstRoundGameLeftTwo = new Game(teams.get(2), teams.get(13), "firstRoundGameLeftTwo");
 				
@@ -118,9 +121,7 @@ public class Main extends Application {
 						firstRoundGameRightTwo = new Game(teams.get(3), teams.get(12), "firstRoundGameRightTwo");
 						firstRoundGameRightThree = new Game(teams.get(5), teams.get(10), "firstRoundGameRightThree");
 						firstRoundGameRightFour = new Game(teams.get(7), teams.get(8), "firstRoundGameRightFour");
-						
-						
-	
+					
 						
 						rows.get(1).getChildren().addAll(quarterFinalGameLeftOne.getBox(),
 								quarterFinalGameLeftTwo.getBox());
@@ -132,8 +133,7 @@ public class Main extends Application {
 								firstRoundGameLeftThree.getBox(),firstRoundGameLeftFour.getBox());
 						rows.get(7).getChildren().addAll(firstRoundGameRightOne.getBox(), firstRoundGameRightTwo.getBox(),
 								firstRoundGameRightThree.getBox(),firstRoundGameRightFour.getBox());
-						
-						
+
 						
 					} else {
 						quarterFinalGameLeftOne.setLabels(teams.get(0), teams.get(7));
@@ -155,11 +155,8 @@ public class Main extends Application {
 				championshipGame.setLabels(teams.get(0), teams.get(1));
 				rows.get(3).getChildren().addAll(championshipGame.getBox());
 			}
-			
-			
 		}
 		
-
 		//adding rows to gpanes
 		for(int i = 0; i < rows.size(); i++) {
 			gPane.add(rows.get(i), i, 1);
