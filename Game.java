@@ -10,9 +10,6 @@
 // Section:          001	
 //
 ///////////////////////////////////////////////////////////////////////////////
-
-package application;
-
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import com.sun.javafx.tk.Toolkit.Task;
@@ -27,6 +24,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+* Creates an instance of a game between two Teams. Adds GUI elements to the 
+* screen. These elements can be edited 
+* 
+* Bugs: No known bugs
+*
+* @author Emma Groblewski
+* @author Brian Guth
+*/
 public class Game {
 	public HBox hb;
 	public VBox labels;
@@ -45,9 +51,12 @@ public class Game {
 	
 	public TextField t1;
 	public TextField t2;
-	private int loserScore;
-	private String loserTeam;
 
+	/**
+	* Creates a Game instance between two specified teams.
+	* @param Team teamOne: First team in the matchup
+	* @param Team teamTwo: Second team in the matchup
+	*/
 	public Game(Team teamOne, Team teamTwo, String game) {
 		this.team1 = teamOne;
 		this.team2 = teamTwo;
@@ -92,36 +101,20 @@ public class Game {
 	
 	}
 
-//	public void setLabels (Team teamOne, Team teamTwo) {
-//		 labels.getChildren().setAll(new Label(teamOne.getName()), new Label(teamTwo.getName()));
-//
-//	}
-	
-	public void getTeamOneScore () {
-		
+	/**
+	* Changes the labels in this Game instance
+	* @param Team teamOne: First team in the matchup
+	* @param Team teamTwo: Second team in the matchup
+	*/
+	public void setLabels (Team teamOne, Team teamTwo) {
+		 labels.getChildren().setAll(new Label(teamOne.getName()), new Label(teamTwo.getName()));
+
 	}
-	
-	public void getTeamTwoScore () {
-		
-	}
-	
+	/**
+	* Returns the HBox
+	* @return hb
+	*/
 	public HBox getBox() {
 		return hb;
-	}
-
-	public int getLoserScore() {
-		return loserScore;
-	}
-
-	public void setLoserScore(int loserScore) {
-		this.loserScore = loserScore;
-	}
-
-	public String getLoserTeam() {
-		return loserTeam;
-	}
-
-	public void setLoserTeam(String team12) {
-		this.loserTeam = team12;
 	}
 }
