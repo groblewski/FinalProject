@@ -433,10 +433,7 @@ public class Main extends Application {
 								int txt1 = Integer.parseInt(semiFinalGameRight.t1.getText());
 								int  txt2 = Integer.parseInt(semiFinalGameRight.t2.getText());
 
-
-								
 							if(txt1 > txt2) {
-								
 								//semiFinalGameRight = new Game(teamOne,null, "TBD");
 								championshipGame.nl2.setText(semiFinalGameRight.nl.getText());
 								//looserR = semiFinalGameRight.t2.getText();
@@ -471,7 +468,7 @@ public class Main extends Application {
 								//championshipGame.nl2.setText(semiFinalGameRight.nl.getText());								
 								String ans = "1st " + championshipGame.nl.getText();				
 								firsPlace = new Label(ans);		
-								String sec = "2nd" + championshipGame.nl2.getText();
+								String sec = "2nd " + championshipGame.nl2.getText();
 								Label secondPlace = new Label(sec);	
 								VBox rank = new VBox();
 								rank.getChildren().addAll(firsPlace,secondPlace);
@@ -482,7 +479,7 @@ public class Main extends Application {
 								
 								firsPlace = new Label(ans);
 								
-								String sec = "2nd" + championshipGame.nl.getText();
+								String sec = "2nd " + championshipGame.nl.getText();
 								Label secondPlace = new Label(sec);
 							
 								
