@@ -2,7 +2,7 @@
 ### Format
 - Mark 3rd place
 - Remove the ability to resubmit scores after evaluation (Remove Button after submission)
-- Check for invalid inputs (i.e. strings)
+- Check for invalid inputs (i.e. strings, 1 input per matchup)
 - Handle size 8, 4, 2, 1, 0 tournament sizes
 
 ### Aesthetics
