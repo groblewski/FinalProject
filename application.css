@@ -1,1 +1,29 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+* {
+ font-family: helvetica; 
+	}		
+
+
+.thebackground {
+    -fx-background-color : #B3E5FC;
+    }
+
+.sectionTitle { 
+    -fx-text-fill   : #01579B;
+    -fx-font-weight : bolder;
+    -fx-font-size   : 14px;
+    }
+.inputSection {
+    -fx-background-color : #E1F5FE;
+    }
+
+.button {
+    -fx-background-color : #29B6F6;
+    -fx-text-fill        : #E1F5FE;
+    -fx-border-radius    : 1;
+    -fx-border-color     : #01579B;
+    }
+
+.button:hover {
+    -fx-background-color : #01579B;
+    }
