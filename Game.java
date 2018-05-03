@@ -15,14 +15,25 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class Game {
-	private HBox hb;
-	private VBox labels;
+	public HBox hb;
+	public VBox labels;
 	private VBox scores;
 	private Team team1;
 	private Team team2;
 	//private  VBox lbls; 
-	private Label lbl1;
-	private Label lbl2;
+	Label nl;
+	Label nl2;
+	public Label lbl1;
+	public Label lbl2;
+	
+	public Button newbie;
+	public int txt1;
+	public int txt2;
+	
+	public TextField t1;
+	public TextField t2;
+	
+	
 	public Game() {
 //		hb = new HBox();
 //		hb.setAlignment(Pos.CENTER);
@@ -45,6 +56,9 @@ public class Game {
 		labels.setPadding(new Insets(5, 0, 0, 0));
 		lbl1 = new Label("TBD");
 		lbl2 = new Label("TBD");
+		if(lbl1.getText() != "TBD" || lbl2.getText() != "TBD") {
+			
+		}
 		labels.getChildren().addAll(lbl1,lbl2);
 		
 		
@@ -73,48 +87,36 @@ public class Game {
 		labels.setAlignment(Pos.TOP_CENTER);
 		labels.setSpacing(10);
 		labels.setPadding(new Insets(5, 0, 0, 0));
-		labels.getChildren().addAll(new Label(teamOne.getName()),new Label(teamTwo.getName()));
+		nl = new Label(teamOne.getName());
+		nl2 = new Label(teamTwo.getName());
 		
+		labels.getChildren().addAll(nl,new Label(teamTwo.getName()));
+		hb.getChildren().add(labels);
+
 		VBox scores = new VBox();
 		scores.setAlignment(Pos.CENTER_RIGHT);
-		TextField t1 = new TextField("Score");
+		 t1 = new TextField("Score");
 		t1.setPrefColumnCount(4);
-		TextField t2 = new TextField("Score");
+		 t2 = new TextField("Score");
 		t2.setPrefColumnCount(4);
-		Button newbie = new Button ("ERT");
+		 		 
+		 
+		newbie = new Button ("ERT");
 		scores.getChildren().addAll(t1, t2, newbie);
-
 		
 		
 		
-		newbie.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				
-				if (game == "firstRoundGameLeftOne") {
-					System.out.println("succ");
-					Main main = new Main();
-					//main.quarterFinalGameLeftOne = new Game(teamOne,teamTwo, "bla");
-				
-				
 		
-			
-
-			main.quarterFinalGameLeftOne.lbl1.setText("f");
-			System.out.println(main.quarterFinalGameLeftOne.lbl1.getText());
-			
-			setLabels(teamOne,teamTwo);
 		
-				}
-			
-			}
-		});
 		
-		hb.getChildren().add(labels);
 		hb.getChildren().add(scores);
-	}
+		
 	
 
+		
+	}
+	
+	
 
 	
 	public void setLabels (Team teamOne, Team teamTwo) {
