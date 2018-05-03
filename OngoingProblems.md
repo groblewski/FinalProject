@@ -1,9 +1,13 @@
 # TO-DO
 
+# Format
 - Remove the ability to resubmit scores after evaluation (Remove Button)
-- Show team names (some are cut-off...) 
-- Outline each round (i.e. display the final round)
-- Check for invalid inputs (i.e. strings)
+- Show full names (some are cut-off...) 
 - Prompt response for ties
+- Check for invalid inputs (i.e. strings)
+
+# Aesthetics
+- Outline each round (i.e. display the final round)
+- Distinguish winners within each round (i.e. add some symbol to show round winner) 
 - 'Distinguish and aesthetically display' championship game and top 3
 - Comment
