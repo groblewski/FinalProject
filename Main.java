@@ -35,7 +35,10 @@ import javafx.scene.paint.Color;
 
 
 public class Main extends Application {
-	
+	//NO NEGATIVE VALUES,
+	//NO STRINGS
+	//WHEN TIE, DELETE THE NAME
+	//increase the length of the label
 	
 	public Game championshipGame;
 	
@@ -112,7 +115,14 @@ public class Main extends Application {
 				if(teams.size() > 4) {
 					rows.get(2).getChildren().addAll(semiFinalGameLeft.getBox());
 					rows.get(4).getChildren().addAll(semiFinalGameRight.getBox());
+					
+					
 					quarterFinalGameLeftOne = new Game();
+					
+					
+					
+					
+					
 					quarterFinalGameLeftTwo = new Game();
 					quarterFinalGameRightOne = new Game();
 					quarterFinalGameRightTwo = new Game();
@@ -148,21 +158,224 @@ public class Main extends Application {
 						});
 						
 						
+						firstRoundGameLeftTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameLeftTwo.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameLeftTwo.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameLeftOne.lbl2.setText(firstRoundGameLeftTwo.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameLeftOne.lbl2.setText(firstRoundGameLeftTwo.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
 						
 						
 				
 						firstRoundGameLeftThree = new Game(teams.get(4), teams.get(11), "firstRoundGameLeftThree");
 						firstRoundGameLeftFour = new Game(teams.get(6), teams.get(9), "firstRoundGameLeftFour");
+						
+						firstRoundGameLeftThree.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameLeftThree.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameLeftThree.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameLeftTwo.lbl1.setText(firstRoundGameLeftThree.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameLeftTwo.lbl1.setText(firstRoundGameLeftThree.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
+						firstRoundGameLeftFour.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameLeftFour.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameLeftFour.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameLeftTwo.lbl2.setText(firstRoundGameLeftFour.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameLeftTwo.lbl2.setText(firstRoundGameLeftFour.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
+						
+						
+						
 						firstRoundGameRightOne = new Game(teams.get(1), teams.get(14), "firstRoundGameRightOne");
+						
+						firstRoundGameRightOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameRightOne.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameRightOne.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameRightOne.lbl1.setText(firstRoundGameRightOne.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameRightOne.lbl1.setText(firstRoundGameRightOne.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
+						
+						
+						
 						firstRoundGameRightTwo = new Game(teams.get(3), teams.get(12), "firstRoundGameRightTwo");
+						
+						firstRoundGameRightTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameRightTwo.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameRightTwo.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameRightOne.lbl2.setText(firstRoundGameRightTwo.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameRightOne.lbl2.setText(firstRoundGameRightTwo.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
+						
+						
+						
 						firstRoundGameRightThree = new Game(teams.get(5), teams.get(10), "firstRoundGameRightThree");
+						
+						
+						firstRoundGameRightThree.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameRightThree.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameRightThree.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameRightTwo.lbl1.setText(firstRoundGameRightThree.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameRightTwo.lbl1.setText(firstRoundGameRightThree.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
+						
 						firstRoundGameRightFour = new Game(teams.get(7), teams.get(8), "firstRoundGameRightFour");
+						
+						
+						firstRoundGameRightFour.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(firstRoundGameRightFour.t1.getText());
+								int  txt2 = Integer.parseInt(firstRoundGameRightFour.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								quarterFinalGameRightTwo.lbl2.setText(firstRoundGameRightFour.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								quarterFinalGameRightTwo.lbl2.setText(firstRoundGameRightFour.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
 						
 						
 	
 						
 						rows.get(1).getChildren().addAll(quarterFinalGameLeftOne.getBox(),
 								quarterFinalGameLeftTwo.getBox());
+						
+						quarterFinalGameLeftOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent event) {
+								
+								
+								int txt1 = Integer.parseInt(quarterFinalGameLeftOne.t1.getText());
+								int  txt2 = Integer.parseInt(quarterFinalGameLeftOne.t2.getText());
+
+								
+							if(txt1 > txt2 ) {
+								//System.out.println(firstRoundGameLeftOne.lbl1.getText());
+								semiFinalGameLeft.lbl1.setText(quarterFinalGameLeftOne.nl.getText());
+							}
+							else if (txt1 < txt2 ) {
+								semiFinalGameLeft.lbl1.setText(quarterFinalGameLeftOne.nl2.getText());
+							}
+							else {
+								
+							}
+							
+							}
+						});
+						
+						
 						rows.get(5).getChildren().addAll(quarterFinalGameRightOne.getBox(),
 								quarterFinalGameRightTwo.getBox());
 						
@@ -181,6 +394,7 @@ public class Main extends Application {
 						quarterFinalGameRightTwo.setLabels(teams.get(3), teams.get(4));
 						rows.get(1).getChildren().addAll(quarterFinalGameLeftOne.getBox(),
 								quarterFinalGameLeftTwo.getBox());
+						
 						rows.get(5).getChildren().addAll(quarterFinalGameRightOne.getBox(),
 								quarterFinalGameRightTwo.getBox());
 					}
@@ -211,7 +425,7 @@ public class Main extends Application {
 //		rows.get(2).getChildren().add(makeTeamBoxLeft());
 //		
 //		//row4
-		//rows.get(3).getChildren().addAll(championshipGame.getBox());
+//		rows.get(3).getChildren().addAll(championshipGame.getBox());
 //		
 //		//row5
 //		rows.get(4).getChildren().add(makeTeamBoxRight());
