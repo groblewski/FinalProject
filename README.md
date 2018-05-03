@@ -1,7 +1,6 @@
 # TO-D0
 ### Format
 - Remove the ability to resubmit scores after evaluation (Remove Button)
-- Show full names (some are cut-off...)
 - Prompt response for ties
 - Check for invalid inputs (i.e. strings)
 
