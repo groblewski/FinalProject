@@ -101,16 +101,10 @@ public class Game {
 			
 
 			main.quarterFinalGameLeftOne.lbl1.setText("f");
+			System.out.println(main.quarterFinalGameLeftOne.lbl1.getText());
 			
-			
+			setLabels(teamOne,teamTwo);
 		
-			
-			
-		
-
-
-
-			
 				}
 			
 			}
@@ -124,9 +118,9 @@ public class Game {
 
 	
 	public void setLabels (Team teamOne, Team teamTwo) {
-		 Main main = new Main();
-		 main.quarterFinalGameLeftOne.labels.getChildren().setAll(new Label(teamOne.getName()),new Label(teamTwo.getName()));
-		 main.quarterFinalGameLeftOne.hb.getChildren().setAll(new Label(teamOne.getName()),new Label(teamTwo.getName()));
+		 labels.getChildren().setAll(new Label(teamOne.getName()), new Label(teamTwo.getName()));
+		
+		
 		
 	}
 	
