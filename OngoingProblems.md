@@ -1,5 +1,6 @@
 # TO-DO
 
 - Remove the ability to resubmit scores after evaluation (Remove Button)
-- Show full names (some names are cut-off) 
+- Show team names (some are cut-off...) 
+- Outline each round (i.e. display the final round)
 - Comment
