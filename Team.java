@@ -17,27 +17,47 @@ public class Team {
 	private String name;
 	private int scoreTeam;
 	
+	/**
+	 * No argument constructor
+	 */
 	public Team() {
 		this.name = null;
 	}
 	
+	/**
+	 * constructs Team object with a given name
+	 * @param name name of team
+	 */
 	public Team(String name){
 		this.name = name;
-		this.previousScore = 0;
 	}
 	
+	/*
+	 * Sets winner and associates score
+	 * @param score score of winner
+	 */
 	public void setWinner(int score) {
 		this.scoreTeam = score;
 	}
 	
+	/*
+	 * gets winner
+	 */
 	public int getWinner() {
 		return scoreTeam;
 	}
 	
+	/*
+	 * Gets name
+	 */
 	public String getName() {
 		return this.name;
 	}
 	
+	/*
+	 * Sets name
+	 * @param name name to be set 
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
