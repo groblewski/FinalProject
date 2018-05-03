@@ -3,6 +3,7 @@
 - Remove the ability to resubmit scores after evaluation (Remove Button)
 - Prompt response for ties
 - Check for invalid inputs (i.e. strings)
+- Different size of teams
 
 ### Aesthetics
 - Outline each round (i.e. display the final round)
