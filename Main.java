@@ -169,6 +169,7 @@ public class Main extends Application {
 		Scene scene = new Scene(gPane, Color.BLACK);
 		scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.setTitle("Tournament Bracket");
 		primaryStage.show();
 
 	}
@@ -277,52 +278,30 @@ public static Stream<String> getWordStream(String filepath) throws IOException {
 }	
 	public static void main(String[] args) {
 	
-	Stream <String> stream = null;
+		Stream <String> stream = null;
 	
-	if (0 == args.length) {
-		System.out.println("Amount of arguments found: " + args.length);
-		System.exit(-1);
-	}
+		if (0 == args.length) {
+			System.out.println("Amount of arguments found: " + args.length);
+			System.exit(-1);
+		}
 	
-	else {
+		else {
 		
-	String fileName = args[0];
-	teamList = new ArrayList<String>();
+		String fileName = args[0];
+		teamList = new ArrayList<String>();
 	
-	try {
-		stream = Main.getWordStream(fileName);
-	}
+		try {
+			stream = Main.getWordStream(fileName);
+		}
 	
-	catch (IOException e) {
-		System.out.println("Unable to find the file: " + fileName);
-		System.exit(-1);
-	}
+		catch (IOException e) {
+			System.out.println("Unable to find the file: " + fileName);
+			System.exit(-1);
+		}
 	
-	teamList = (ArrayList<String>) stream.collect(Collectors.toList());
-	System.out.print(teamList);
-	launch(args);
+		teamList = (ArrayList<String>) stream.collect(Collectors.toList());
+		System.out.print(teamList);
+		launch(args);
+		}
 	}
 }
-}
-
-//public static void main(String[] args) {
-//	
-//	Stream <String> stream = null;
-//	String fileName = file path on your computer to teamList.txt
-//	teamList = new ArrayList<String>();
-//	
-//	try {
-//		stream = Main.getWordStream(fileName);
-//	}
-//	
-//	catch (IOException e) {
-//		System.out.println("Unable to find the file: " + fileName);
-//		System.exit(-1);
-//	}
-//	
-//	teamList = (ArrayList<String>) stream.collect(Collectors.toList());
-//	System.out.print(teamList);
-//	launch(args);
-//	}
-//}
-//}
