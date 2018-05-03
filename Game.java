@@ -45,10 +45,7 @@ public class Game {
 	
 	public TextField t1;
 	public TextField t2;
-	
-	
-	
-	
+
 	public Game(Team teamOne, Team teamTwo, String game) {
 		this.team1 = teamOne;
 		this.team2 = teamTwo;
@@ -62,32 +59,23 @@ public class Game {
 		labels.setSpacing(10);
 		labels.setPadding(new Insets(5, 0, 0, 0));
 		
-		
-	if(team1 == null || team2 == null) {
-			
-
+	if (team1 == null || team2 == null) {
 		nl = new Label("TBD");
 		nl2 = new Label("TBD");
 		labels.getChildren().addAll(nl,nl2);
 		hb.getChildren().add(labels);
 		
-		}
+	}
+	
 	else {
-		
-		
-
 		nl = new Label(teamOne.getName());
 		System.out.println(nl + " is nl");
 		nl2 = new Label(teamTwo.getName());
 		labels.getChildren().addAll(nl,new Label(teamTwo.getName()));
 		hb.getChildren().add(labels);
 
-		
-		
 	}
 		
-	
-
 	VBox scores = new VBox();
 	scores.setAlignment(Pos.CENTER_RIGHT);
 	 t1 = new TextField("Score");
@@ -95,28 +83,16 @@ public class Game {
 	 t2 = new TextField("Score");
 	t2.setPrefColumnCount(4);
 	 		 
-	 
-	newbie = new Button ("ERT");
+	newbie = new Button ("Submit");
 	scores.getChildren().addAll(t1, t2, newbie);
-	
-	
-	
-	
-	
 	
 	hb.getChildren().add(scores);
 	
-		
 	}
-	
-	
 
-	
 	public void setLabels (Team teamOne, Team teamTwo) {
 		 labels.getChildren().setAll(new Label(teamOne.getName()), new Label(teamTwo.getName()));
-		
-		
-		
+
 	}
 	
 	public void getTeamOneScore () {
@@ -127,10 +103,7 @@ public class Game {
 		
 	}
 	
-	
 	public HBox getBox() {
 		return hb;
 	}
-	
-
 }
