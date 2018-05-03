@@ -41,9 +41,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-
-
-
 public class Main extends Application {
 	static ArrayList<String> teamList;
 	
@@ -111,6 +108,7 @@ public class Main extends Application {
 			
 		}
 		
+		
 		if (teams.size() > 1) {
 			championshipGame = new Game(null,null, "TBD");
 			
@@ -119,19 +117,20 @@ public class Main extends Application {
 				public void handle(ActionEvent event) {
 					Label firsPlace = new Label();
 					Label secPlace = new Label();
-					Label thirdPlace;
+					Label thirdPlace = null;
 					VBox rank = new VBox();
 					
 					String third;
-					System.out.println(semiFinalGameLeft.getLoserTeam() + semiFinalGameRight.getLoserTeam());
 					
-					if(semiFinalGameLeft.getLoserScore() > semiFinalGameRight.getLoserScore()) {
-						third = semiFinalGameLeft.getLoserTeam();
-					} else {
-						third = semiFinalGameRight.getLoserTeam();
+					if(semiFinalGameLeft != null && semiFinalGameRight != null) {
+						if(semiFinalGameLeft.getLoserScore() > semiFinalGameRight.getLoserScore()) {
+							third = semiFinalGameLeft.getLoserTeam();
+						} else {
+							third = semiFinalGameRight.getLoserTeam();
+						}
+						thirdPlace = new Label("3rd Place: " + third);
 					}
-					thirdPlace = new Label("3rd Place: " + third);
-					
+
 					int txt1 = Integer.parseInt(championshipGame.t1.getText());
 					int  txt2 = Integer.parseInt(championshipGame.t2.getText());//semiFinalGameRight
 
@@ -142,8 +141,13 @@ public class Main extends Application {
 						firsPlace = new Label(ans);		
 						String sec = "2nd Place: " + championshipGame.nl2.getText();
 						secPlace = new Label(sec);
-						
-						rank.getChildren().addAll(firsPlace,secPlace,thirdPlace);
+
+						if(thirdPlace != null) {
+							rank.getChildren().addAll(firsPlace,secPlace,thirdPlace);
+						} else {
+							rank.getChildren().addAll(firsPlace,secPlace);
+						}
+
 						rows.get(3).getChildren().setAll(rank);
 					}
 					else if (txt1 < txt2) {
@@ -151,7 +155,7 @@ public class Main extends Application {
 						firsPlace = new Label(ans);
 						String sec = "2nd " + championshipGame.nl.getText();
 						secPlace = new Label(sec);
-						
+
 						rank.getChildren().addAll(firsPlace,secPlace,thirdPlace);
 						rows.get(3).getChildren().setAll(rank);
 
@@ -573,9 +577,6 @@ public class Main extends Application {
 
 
 		}
-		
-		System.out.println(1);
-		
 		
 	
 		//adding rows to gpanes
