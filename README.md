@@ -1,14 +1,13 @@
 # TO-D0
 ### Format
-- Sort 3rd place
-- Remove the ability to resubmit scores after evaluation (Remove Button)
-- Prompt response for ties
+- Mark 3rd place
+- Remove the ability to resubmit scores after evaluation (Remove Button after submission)
 - Check for invalid inputs (i.e. strings)
-- Handles other required tournament sizes
+- Handle size 8, 4, 2, 1, 0 tournament sizes
 
 ### Aesthetics
-- Outline each round (i.e. display the final round)
+- Distinguish each round (i.e. display the final round)
 - Distinguish winners for each round (i.e. add some symbol to show round winner)
-- 'Distinguish and aesthetically display' championship game and top 3
+- 'Aesthetically display' championship game and top 3
 
 ### Comment Files
