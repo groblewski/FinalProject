@@ -45,6 +45,8 @@ public class Game {
 	
 	public TextField t1;
 	public TextField t2;
+	private int loserScore;
+	private String loserTeam;
 
 	public Game(Team teamOne, Team teamTwo, String game) {
 		this.team1 = teamOne;
@@ -90,10 +92,10 @@ public class Game {
 	
 	}
 
-	public void setLabels (Team teamOne, Team teamTwo) {
-		 labels.getChildren().setAll(new Label(teamOne.getName()), new Label(teamTwo.getName()));
-
-	}
+//	public void setLabels (Team teamOne, Team teamTwo) {
+//		 labels.getChildren().setAll(new Label(teamOne.getName()), new Label(teamTwo.getName()));
+//
+//	}
 	
 	public void getTeamOneScore () {
 		
@@ -105,5 +107,21 @@ public class Game {
 	
 	public HBox getBox() {
 		return hb;
+	}
+
+	public int getLoserScore() {
+		return loserScore;
+	}
+
+	public void setLoserScore(int loserScore) {
+		this.loserScore = loserScore;
+	}
+
+	public String getLoserTeam() {
+		return loserTeam;
+	}
+
+	public void setLoserTeam(String team12) {
+		this.loserTeam = team12;
 	}
 }
