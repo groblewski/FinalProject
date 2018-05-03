@@ -167,6 +167,7 @@ public class Main extends Application {
 
 		
 		Scene scene = new Scene(gPane, Color.BLACK);
+		scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
