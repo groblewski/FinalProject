@@ -1,14 +1,25 @@
 package application;
 
 public class Team {
+	
+	private int seed;
 	private String name;
 	private int previousScore;
 	private int scoreTeam;
 	
-	public Team(String name) {
+	
+	public Team() {
+		this.seed = 0;
+		this.name = null;
+		this.previousScore = 0;
+	}
+	
+	public Team(String name, int seed){
+		this.seed = seed;
 		this.name = name;
 		this.previousScore = 0;
 	}
+	
 	
 	public void setWinner(int score) {
 		this.scoreTeam = score;
@@ -16,6 +27,15 @@ public class Team {
 	
 	public int getWinner() {
 		return scoreTeam;
+	}
+	
+	
+	public int getSeed() {
+		return this.seed;
+	}
+	
+	public void setSeed(int seed) {
+		this.seed = seed;
 	}
 	
 	public String getName() {
@@ -33,4 +53,5 @@ public class Team {
 	public void setPreviousScore(int previousScore) {
 		this.previousScore = previousScore;
 	}
+
 }
