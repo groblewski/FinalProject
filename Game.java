@@ -1,3 +1,16 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   
+// Title:            Milestone 3, Final Project
+// Files:            Game.java, Main.java, Team.java, application.css
+// Semester:         CS 400, Spring 2018
+//
+// Author(s):        Brennan Fife, Brian Guth, Emma Groblewski, 
+//		     Mustafa Musabeyli, Jared Glaub
+// Lecturer's Name:  Deb Deppeler
+// Section:          001	
+//
+///////////////////////////////////////////////////////////////////////////////
+
 package application;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
