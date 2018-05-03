@@ -4,4 +4,6 @@
 - Show team names (some are cut-off...) 
 - Outline each round (i.e. display the final round)
 - Check for invalid inputs (i.e. strings)
+- Prompt response for ties
+- 'Distinguish and aesthetically display' championship game and top 3
 - Comment
