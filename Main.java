@@ -33,7 +33,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+
+
+
+
 public class Main extends Application {
+	static ArrayList<String> teamList;
+	
 	public Game championshipGame;
 	
 	public Game semiFinalGameLeft;
@@ -53,8 +66,6 @@ public class Main extends Application {
 	public Game firstRoundGameRightThree;
 	public Game firstRoundGameRightFour;
 	
-	Thread myTaskThread;
-	MyTask myTask;
 	
 	GridPane gPane = new GridPane();
 	
@@ -63,10 +74,14 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		List <Team>teams = new ArrayList();
+		ArrayList<Team>teams = new ArrayList();
+		
+		for(int i = 0; i < teamList.size(); i++) {
+			teams.add(new Team(teamList.get(i)));
+		}
 	
-		teams.add(new Team("Brian", 1));
-		teams.add(new Team("Jared", 2));
+//		teams.add(new Team("Brian", 1));
+//		teams.add(new Team("Jared", 2));
 //		teams.add(new Team("Brennan", 3));
 //		teams.add(new Team("Mustafa", 4));
 //		teams.add(new Team("Caitlyn", 5));
@@ -90,6 +105,7 @@ public class Main extends Application {
 			rows.add(new VBox());
 			rows.get(i).setAlignment(Pos.CENTER);
 		}
+		
 		
 		if (teams.size() == 1) {
 			
@@ -573,71 +589,42 @@ public class Main extends Application {
 		primaryStage.show();
 		//quarterFinalGameLeftOne.lbl1.setText("H:");
 	}
-
-	public HBox makeTeamBoxLeft() {
-		HBox hb = new HBox();
-		hb.setAlignment(Pos.CENTER);
-		hb.setPadding(new Insets(10,10,10,10));
-		VBox labels = new VBox();
-		labels.setAlignment(Pos.TOP_CENTER);
-		labels.setSpacing(10);
-		labels.setPadding(new Insets(5, 0, 0, 0));
-		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
-		VBox scores = new VBox();
-		TextField t1 = new TextField("Score");
-		t1.setPrefColumnCount(1);
-		TextField t2 = new TextField("Score");
-		t2.setPrefColumnCount(1);
-		scores.getChildren().addAll(t1, t2, new Button("Useless"));
-		hb.getChildren().add(labels);
-		hb.getChildren().add(scores);
-		return hb;
-	}
 	
-public HBox makeTeamBoxRight() {
-		HBox hb = new HBox();
-		hb.setAlignment(Pos.CENTER);
-		hb.setPadding(new Insets(10,10,10,10));
-		VBox labels = new VBox();
-		labels.setAlignment(Pos.TOP_CENTER);
-		labels.setSpacing(10);
-		labels.setPadding(new Insets(5, 0, 0, 0));
-		labels.getChildren().addAll(new Label("Team1"),new Label("Team2"));
-		VBox scores = new VBox();
-		TextField t1 = new TextField("Score");
-		t1.setPrefColumnCount(1);
-		TextField t2 = new TextField("Score");
-		t2.setPrefColumnCount(1);
-		scores.getChildren().addAll(t1, t2, new Button("Submit"));
-		hb.getChildren().add(scores);
-		hb.getChildren().add(labels);
-		return hb;
+	public static Stream<String> getWordStream(String filepath) throws IOException {
+		
+		Stream <String> stream = Files.lines(Paths.get(filepath));
+		stream = stream.filter(str->str.trim().length() > 0);
+		stream = stream.map(String::trim);
+		stream = stream.map(String::toUpperCase);
+		
+		return stream;
+	}	
+		public static void main(String[] args) {
+		
+			Stream <String> stream = null;
+		
+			if (0 == args.length) {
+				System.out.println("Amount of arguments found: " + args.length);
+				System.exit(-1);
+			}
+		
+			else {
+			
+			String fileName = args[0];
+			teamList = new ArrayList<String>();
+		
+			try {
+				stream = Main.getWordStream(fileName);
+			}
+		
+			catch (IOException e) {
+				System.out.println("Unable to find the file: " + fileName);
+				System.exit(-1);
+			}
+		
+			teamList = (ArrayList<String>) stream.collect(Collectors.toList());
+			System.out.print(teamList);
+			launch(args);
+			}
+		}
 	}
-
-public VBox makeTeamBoxChampionship() {
-	VBox vb = new VBox();
-	vb.setAlignment(Pos.CENTER);
-	vb.setPadding(new Insets(10,10,10,10));
-	TextField t1 = new TextField("Score");
-	t1.setPrefColumnCount(1);
-	TextField t2 = new TextField("Score");
-	t2.setPrefColumnCount(1);
-	vb.getChildren().addAll(new Label("Team1"), t1, new Label("Team2"), t2, new Button("SAD"));
-	return vb;
-}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-	class MyTask extends Task<Void>{
-        
-        @Override
-        protected Void call() throws Exception {
-            for (int i = 1; i <= 100; i++) {
-                updateProgress(i, 100);
-                Thread.sleep(100);
-            }
-            return null;
-        }
-    }
-}
