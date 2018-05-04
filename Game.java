@@ -53,6 +53,8 @@ public class Game {
 	private String loserTeam;
 
 	public Game(Team teamOne, Team teamTwo, String game) {
+		//creates the labels and adds it into the HBox using VBox
+		//creates a button and adds it to to the VBox with HBox
 		this.team1 = teamOne;
 		this.team2 = teamTwo;
 		
