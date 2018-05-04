@@ -63,12 +63,12 @@ public class Main extends Application {
 	public Game firstRoundGameRightThree;
 	public Game firstRoundGameRightFour;
 	
-	
 	GridPane gPane = new GridPane();
 	
-	//String looserR
-	String looserL;
-	
+	/**
+	* Starts the program. Sets up the respective bracket. 'Newbie' is name for program's button.
+	*
+	*//
 	@Override
 	public void start(Stage primaryStage) {
 		ArrayList<Team>teams = new ArrayList();
@@ -76,23 +76,6 @@ public class Main extends Application {
 		for(int i = 0; i < teamList.size(); i++) {
 			teams.add(new Team(teamList.get(i)));
 		}
-	
-//		teams.add(new Team("Brian", 1));
-//		teams.add(new Team("Jared", 2));
-//		teams.add(new Team("Brennan", 3));
-//		teams.add(new Team("Mustafa", 4));
-//		teams.add(new Team("Caitlyn", 5));
-//		teams.add(new Team("Jacob", 6));
-//		teams.add(new Team("Phyllis", 7));
-//		teams.add(new Team("Michael", 8));
-//		teams.add(new Team("Lisa", 1));
-//		teams.add(new Team("Mary-Ellen", 2));
-//		teams.add(new Team("Mark", 3));
-//		teams.add(new Team("Steve", 4));
-//		teams.add(new Team("Corky", 5));
-//		teams.add(new Team("Paul", 6));
-//		teams.add(new Team("David", 7));
-//		teams.add(new Team("Lillian", 8));
 		
 		gPane.setAlignment(Pos.CENTER);
 		
@@ -103,13 +86,7 @@ public class Main extends Application {
 			rows.get(i).setAlignment(Pos.CENTER);
 		}
 		
-		
-		if (teams.size() == 1) {
-			
-		}
-		
-		
-		if (teams.size() > 1) {
+		if (teams.size() > 1) { //For files with more than 2 teams
 			championshipGame = new Game(null,null, "TBD");
 			
 			championshipGame.newbie.setOnAction(new EventHandler<ActionEvent>() {
@@ -132,15 +109,14 @@ public class Main extends Application {
 					}
 
 					try { 
-
 						int txt1 = Integer.parseInt(championshipGame.t1.getText());
 						int  txt2 = Integer.parseInt(championshipGame.t2.getText());
 
 						if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 							if (txt1 > txt2) {								
-								String ans = "1st: " + championshipGame.nl.getText();				
+								String ans = "1st: " + championshipGame.nl.getText(); //n1 = new label			
 								firsPlace = new Label(ans);		
-								String sec = "2nd: " + championshipGame.nl2.getText();
+								String sec = "2nd: " + championshipGame.nl2.getText(); //nl2 = new label 
 								secPlace = new Label(sec);
 
 								if(thirdPlace != null) {
@@ -159,20 +135,16 @@ public class Main extends Application {
 
 								rank.getChildren().addAll(firsPlace,secPlace,thirdPlace);
 								rows.get(3).getChildren().setAll(rank);
-
-
 							}
 						}
-
-
+						
 					} catch (NumberFormatException e) {
 
 					}
-
 				}
 			});
 
-			if (teams.size() > 2) {
+			if (teams.size() > 2) { //if there is a file of 4+ teams
 				rows.get(3).getChildren().addAll(championshipGame.getBox());
 				semiFinalGameLeft = new Game(null, null, "TBD");
 				semiFinalGameRight = new Game(null, null, "TBD");
@@ -181,13 +153,11 @@ public class Main extends Application {
 					@Override
 					public void handle(ActionEvent event) {
 						try { 
-
 							int txt1 = Integer.parseInt(semiFinalGameLeft.t1.getText());
 							int  txt2 = Integer.parseInt(semiFinalGameLeft.t2.getText());
 
 							if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 								if (txt1 > txt2) {
-
 									championshipGame.nl.setText(semiFinalGameLeft.nl.getText());
 									semiFinalGameLeft.setLoserScore(txt2);
 									semiFinalGameLeft.setLoserTeam(semiFinalGameLeft.nl2.getText());
@@ -201,12 +171,9 @@ public class Main extends Application {
 								}
 								semiFinalGameLeft.scores.getChildren().remove(2);
 							}
-
-
 						} catch (NumberFormatException e) {
 							
 						}
-						
 					}
 				});
 
@@ -214,37 +181,30 @@ public class Main extends Application {
 					@Override
 					public void handle(ActionEvent event) {
 						try { 
-
 							int txt1 = Integer.parseInt(semiFinalGameRight.t1.getText());
 							int  txt2 = Integer.parseInt(semiFinalGameRight.t2.getText());
 
 							if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 								if(txt1 > txt2) {
-
 									championshipGame.nl2.setText(semiFinalGameRight.nl.getText());
 									semiFinalGameRight.setLoserScore(txt2);
 									semiFinalGameRight.setLoserTeam(semiFinalGameRight.nl2.getText());
-
 								}
 								else if (txt1 < txt2) {
 									championshipGame.nl2.setText(semiFinalGameRight.nl2.getText());
 									semiFinalGameRight.setLoserScore(txt1);
 									semiFinalGameRight.setLoserTeam(semiFinalGameRight.nl.getText());
-
 								}
 								semiFinalGameRight.scores.getChildren().remove(2);
 							}
-
-
+							
 						} catch (NumberFormatException e) {
 							
 						}
-						
-
 					}
 				});
-
-				if (teams.size() > 4) {
+				
+				if (teams.size() > 4) { //if file has 8+ teams
 					rows.get(2).getChildren().addAll(semiFinalGameLeft.getBox());
 					rows.get(4).getChildren().addAll(semiFinalGameRight.getBox());
 					quarterFinalGameLeftOne = new Game(null, null, "TBD");
@@ -256,28 +216,22 @@ public class Main extends Application {
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
-
 								int txt1 = Integer.parseInt(quarterFinalGameLeftOne.t1.getText());
 								int  txt2 = Integer.parseInt(quarterFinalGameLeftOne.t2.getText());
 
 								if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 									if (txt1 > txt2) {
-										//semiFinalGameRight = new Game(teamOne,null, "TBD");
 										semiFinalGameLeft.nl.setText(quarterFinalGameLeftOne.nl.getText());
 									}
 									else if (txt1 < txt2) {
 										semiFinalGameLeft.nl.setText(quarterFinalGameLeftOne.nl2.getText());
-
 									}
 									quarterFinalGameLeftOne.scores.getChildren().remove(2);
 								}
-
-
-
+								
 							} catch (NumberFormatException e) {
 
 							}
-							
 						}
 					});
 
@@ -285,7 +239,6 @@ public class Main extends Application {
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
-
 								int txt1 = Integer.parseInt(quarterFinalGameLeftTwo.t1.getText());
 								int  txt2 = Integer.parseInt(quarterFinalGameLeftTwo.t2.getText());
 
@@ -300,12 +253,9 @@ public class Main extends Application {
 									quarterFinalGameLeftTwo.scores.getChildren().remove(2);
 								}
 
-
-
 							} catch (NumberFormatException e) {
 
 							}
-
 						}
 					});
 
@@ -313,7 +263,6 @@ public class Main extends Application {
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
-
 								int txt1 = Integer.parseInt(quarterFinalGameRightTwo.t1.getText());
 								int  txt2 = Integer.parseInt(quarterFinalGameRightTwo.t2.getText());
 
@@ -328,22 +277,16 @@ public class Main extends Application {
 									quarterFinalGameRightTwo.scores.getChildren().remove(2);
 								}
 
-
-
 							} catch (NumberFormatException e) {
 
 							}
-							
-
 						}
 					});
-
 
 					quarterFinalGameRightOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
-								
 								int txt1 = Integer.parseInt(quarterFinalGameRightOne.t1.getText());
 								int  txt2 = Integer.parseInt(quarterFinalGameRightOne.t2.getText());
 								
@@ -358,21 +301,13 @@ public class Main extends Application {
 									quarterFinalGameRightOne.scores.getChildren().remove(2);
 								}
 								
-								
-								
 							} catch (NumberFormatException e) {
 								
 							}
-							
-
 						}
 					});
 
-
-
-					if (teams.size() > 8) {
-						
-						
+					if (teams.size() > 8) { //if file has 16 teams
 						firstRoundGameLeftOne = new Game(teams.get(0), teams.get(15), "firstRoundGameLeftOne");
 						firstRoundGameLeftTwo = new Game(teams.get(2), teams.get(13), "firstRoundGameLeftTwo");
 						firstRoundGameLeftThree = new Game(teams.get(4), teams.get(11), "firstRoundGameLeftThree");
@@ -385,14 +320,12 @@ public class Main extends Application {
 						firstRoundGameLeftOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
-								try { 
-									
+								try { 	
 									int txt1 = Integer.parseInt(firstRoundGameLeftOne.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameLeftOne.t2.getText());
 									
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameLeftOne.nl.setText(firstRoundGameLeftOne.nl.getText());
 						
 										}
@@ -403,13 +336,9 @@ public class Main extends Application {
 										firstRoundGameLeftOne.scores.getChildren().remove(2);
 									}
 									
-									
-									
 								} catch (NumberFormatException e) {
 									
 								}
-								
-								
 							}
 						});
 
@@ -417,13 +346,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameLeftTwo.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameLeftTwo.t2.getText());
 
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameLeftOne.nl2.setText(firstRoundGameLeftTwo.nl.getText());
 										}
 										else if (txt1 < txt2) {
@@ -432,12 +359,9 @@ public class Main extends Application {
 										firstRoundGameLeftTwo.scores.getChildren().remove(2);
 									}
 
-
-
 								} catch (NumberFormatException e) {
 
 								}
-								
 							}
 						});
 
@@ -445,13 +369,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameLeftThree.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameLeftThree.t2.getText());
 
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameLeftTwo.nl.setText(firstRoundGameLeftThree.nl.getText());
 										}
 										else if (txt1 < txt2) {
@@ -460,15 +382,9 @@ public class Main extends Application {
 										firstRoundGameLeftThree.scores.getChildren().remove(2);
 									}
 
-
-
 								} catch (NumberFormatException e) {
 									
 								}
-
-
-					
-
 							}
 						});
 
@@ -476,13 +392,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameLeftFour.t1.getText());
 									int txt2 = Integer.parseInt(firstRoundGameLeftFour.t2.getText());
 
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameLeftTwo.nl2.setText(firstRoundGameLeftFour.nl.getText());
 										}
 										else if (txt1 < txt2 ) {
@@ -491,13 +405,9 @@ public class Main extends Application {
 										firstRoundGameLeftFour.scores.getChildren().remove(2);
 									}
 
-
-
 								} catch (NumberFormatException e) {
 									
 								}
-								
-								
 							}
 						});
 
@@ -505,13 +415,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameRightOne.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameRightOne.t2.getText());
 
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameRightOne.nl.setText(firstRoundGameRightOne.nl.getText());
 										}
 										else if (txt1 < txt2) {
@@ -519,13 +427,10 @@ public class Main extends Application {
 										}
 										firstRoundGameRightOne.scores.getChildren().remove(2);
 									}
-
-
+									
 								} catch (NumberFormatException e) {
 									
 								}
-								
-
 							}
 						});
 
@@ -533,13 +438,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameRightTwo.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameRightTwo.t2.getText());
 
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if(txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameRightOne.nl2.setText(firstRoundGameRightTwo.nl.getText());
 										}
 										else if (txt1 < txt2) {
@@ -548,12 +451,9 @@ public class Main extends Application {
 										firstRoundGameRightTwo.scores.getChildren().remove(2);
 									}
 
-
 								} catch (NumberFormatException e) {
 									
 								}
-
-
 							}
 						});
 
@@ -561,13 +461,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameRightThree.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameRightThree.t2.getText());
 
 									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameRightTwo.nl.setText(firstRoundGameRightThree.nl.getText());
 										}
 										else if (txt1 < txt2) {
@@ -575,13 +473,10 @@ public class Main extends Application {
 										}
 										firstRoundGameRightThree.scores.getChildren().remove(2);
 									}
-
-
+									
 								} catch (NumberFormatException e) {
 									
 								}
-								
-
 							}
 						});
 
@@ -589,13 +484,11 @@ public class Main extends Application {
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
-
 									int txt1 = Integer.parseInt(firstRoundGameRightFour.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameRightFour.t2.getText());
 
-									if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
+									if (txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 										if (txt1 > txt2) {
-											//System.out.println(firstRoundGameLeftOne.lbl1.getText());
 											quarterFinalGameRightTwo.nl2.setText(firstRoundGameRightFour.nl.getText());
 										}
 										else if (txt1 < txt2) {
@@ -604,16 +497,11 @@ public class Main extends Application {
 										firstRoundGameRightFour.scores.getChildren().remove(2);
 									}
 
-
 								} catch (NumberFormatException e) {
 									
 								}
-
-
 							}
 						});
-
-
 
 						rows.get(1).getChildren().addAll(quarterFinalGameLeftOne.getBox(),
 								quarterFinalGameLeftTwo.getBox());					
@@ -654,24 +542,18 @@ public class Main extends Application {
 				championshipGame.nl2.setText(teams.get(1).getName());
 
 				rows.get(3).getChildren().addAll(championshipGame.getBox());
-
 			}
-
-
 		}
 		
-	
 		//adding rows to gpanes
 		for(int i = 0; i < rows.size(); i++) {
 			gPane.add(rows.get(i), i, 1);
 		}
 		
-		
 		Scene scene = new Scene(gPane, Color.BLACK);
-		scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm()); //grab from .css file
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		//quarterFinalGameLeftOne.lbl1.setText("H:");
 	}
 	
 	public static Stream<String> getWordStream(String filepath) throws IOException {
@@ -693,7 +575,6 @@ public class Main extends Application {
 			}
 		
 			else {
-			
 			String fileName = args[0];
 			teamList = new ArrayList<String>();
 		
@@ -712,4 +593,3 @@ public class Main extends Application {
 			}
 		}
 	}
-
