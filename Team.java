@@ -14,9 +14,9 @@
 package application;
 
 /**
+ * Creates an instance of a Team to be put into @see Game that is put into @see Main
  * 
- * 
- *
+ *@author(s) Brennan Fife, Brian Guth, Emma Groblewski, Mustafa Musabeyli, Jared Glaub
  */
 public class Team {
 	
@@ -30,10 +30,18 @@ public class Team {
 		this.name = name;
 	}
 	
+	/**
+	*
+	*@return name of team
+	*/
 	public String getName() {
 		return this.name;
 	}
 	
+	/**
+	*Sets the name of this team
+	*
+	*/
 	public void setName(String name) {
 		this.name = name;
 	}
