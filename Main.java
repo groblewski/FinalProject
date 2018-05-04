@@ -586,7 +586,6 @@ public class Main extends Application {
 			}
 		
 			teamList = (ArrayList<String>) stream.collect(Collectors.toList());
-			System.out.print(teamList);
 			launch(args);
 			}
 		}
