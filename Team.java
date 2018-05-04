@@ -13,32 +13,22 @@
 
 package application;
 
+/**
+ * 
+ * 
+ *
+ */
 public class Team {
 	
 	private String name;
-	private int previousScore;
-	private int scoreTeam;
-	
 	
 	public Team() {
 		this.name = null;
-		this.previousScore = 0;
 	}
 	
 	public Team(String name){
 		this.name = name;
-		this.previousScore = 0;
 	}
-	
-	
-	public void setWinner(int score) {
-		this.scoreTeam = score;
-	}
-	
-	public int getWinner() {
-		return scoreTeam;
-	}
-	
 	
 	public String getName() {
 		return this.name;
