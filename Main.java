@@ -42,7 +42,7 @@ import java.util.stream.Stream;
 public class Main extends Application {
 	static ArrayList<String> teamList;
 	
-	public Game championshipGame;
+	public Game championshipGame; 
 	
 	public Game semiFinalGameLeft;
 	public Game semiFinalGameRight;
@@ -66,16 +66,19 @@ public class Main extends Application {
 	/**
 	* Starts the program. Sets up the respective bracket. 'Newbie' is name for program's button.
 	*
-	*//
+	*/
 	@Override
 	public void start(Stage primaryStage) {
-		ArrayList<Team>teams = new ArrayList();
+		
+		
+		
+		ArrayList<Team>teams = new ArrayList(); 
 		
 		for(int i = 0; i < teamList.size(); i++) {
 			teams.add(new Team(teamList.get(i)));
 		}
 		
-		gPane.setAlignment(Pos.CENTER);
+		gPane.setAlignment(Pos.CENTER); //sets the structure for game
 		
 		ArrayList<VBox> rows = new ArrayList<VBox>();
 		
@@ -84,20 +87,30 @@ public class Main extends Application {
 			rows.get(i).setAlignment(Pos.CENTER);
 		}
 		
+		
+		
+		
 		if (teams.size() > 1) { //For files with more than 2 teams
+			
+			
 			championshipGame = new Game(null,null, "TBD");
 			
+			
 			championshipGame.newbie.setOnAction(new EventHandler<ActionEvent>() {
+				//Button newbie is used in every single game instance
+				//Its meant to be the submit button where we will compare the results
+				//In championship game, it hides the game and turns the rankings
+				
 				@Override
 				public void handle(ActionEvent event) {
-					Label firsPlace = new Label();
+					Label firsPlace = new Label(); //
 					Label secPlace = new Label();
 					Label thirdPlace = null;
 					VBox rank = new VBox();
 					
 					String third;
 
-					if(semiFinalGameLeft != null && semiFinalGameRight != null) {
+					if(semiFinalGameLeft != null && semiFinalGameRight != null) { //checks whether the inputs are not empty
 						if(semiFinalGameLeft.getLoserScore() > semiFinalGameRight.getLoserScore()) {
 							third = semiFinalGameLeft.getLoserTeam();
 						} else {
@@ -112,20 +125,22 @@ public class Main extends Application {
 
 						if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
 							if (txt1 > txt2) {								
-								String ans = "1st: " + championshipGame.nl.getText(); //n1 = new label			
+								String ans = "1st: " + championshipGame.nl.getText(); //nl = 1st label in the game, in this case championshipGame, which holds the first team's name		
 								firsPlace = new Label(ans);		
-								String sec = "2nd: " + championshipGame.nl2.getText(); //nl2 = new label 
+								String sec = "2nd: " + championshipGame.nl2.getText(); //nl2 = 2nd label in the game, in this case championshipGame, which holds the second team's name
 								secPlace = new Label(sec);
 
-								if(thirdPlace != null) {
+								if(thirdPlace != null) {//adds the first and secondPlace, if we have only 2 teams
 									rank.getChildren().addAll(firsPlace,secPlace,thirdPlace);
 								} else {
 									rank.getChildren().addAll(firsPlace,secPlace);
 								}
+								
+								//adds the labels into the rows to display
 
 								rows.get(3).getChildren().setAll(rank);
 							}
-							else if (txt1 < txt2) {
+							else if (txt1 < txt2) { //same operation above for the second value, since its bigger than first
 								String ans = "1st: " + championshipGame.nl2.getText();
 								firsPlace = new Label(ans);
 								String sec = "2nd:" + championshipGame.nl.getText();
@@ -136,7 +151,7 @@ public class Main extends Application {
 							}
 						}
 						
-					} catch (NumberFormatException e) {
+					} catch (NumberFormatException e) { //in order to catch exceptions, if user puts a string
 
 					}
 				}
@@ -144,24 +159,33 @@ public class Main extends Application {
 
 			if (teams.size() > 2) { //if there is a file of 4+ teams
 				rows.get(3).getChildren().addAll(championshipGame.getBox());
-				semiFinalGameLeft = new Game(null, null, "TBD");
-				semiFinalGameRight = new Game(null, null, "TBD");
+				semiFinalGameLeft = new Game(null, null, "TBD"); //creates a semiFinalGameLeft with both times null
+				semiFinalGameRight = new Game(null, null, "TBD"); 
 				
-				semiFinalGameLeft.newbie.setOnAction(new EventHandler<ActionEvent>() {
+				semiFinalGameLeft.newbie.setOnAction(new EventHandler<ActionEvent>() { 
+					// compares the results of the TextFields and sets the Championship Game's upper team
 					@Override
 					public void handle(ActionEvent event) {
 						try { 
-							int txt1 = Integer.parseInt(semiFinalGameLeft.t1.getText());
-							int  txt2 = Integer.parseInt(semiFinalGameLeft.t2.getText());
-
-							if(txt1 > 0 && txt2 > 0 && txt1 != txt2) {
+							int txt1 = Integer.parseInt(semiFinalGameLeft.t1.getText()); //int version of the entered value for upper team in semiFinal
+							int  txt2 = Integer.parseInt(semiFinalGameLeft.t2.getText()); //int version of the entered value for lower team in semiFinal
+							//t1 represents TextField for the upper Team in the game
+							//t2 represents TextField for the upper Team in the game
+ 
+							if(txt1 > 0 && txt2 > 0 && txt1 != txt2) { 
+								
+								//doesnt allow values that are smaller than 0
+								//doesnt allow ties as well
+								
 								if (txt1 > txt2) {
+									//if the semiFinal upper team > other
+									//set the Championship first team's text value to semiFinal's winner value, which is txt1 right now
 									championshipGame.nl.setText(semiFinalGameLeft.nl.getText());
 									semiFinalGameLeft.setLoserScore(txt2);
 									semiFinalGameLeft.setLoserTeam(semiFinalGameLeft.nl2.getText());
 		 
 								}
-								else if (txt1 < txt2) {
+								else if (txt1 < txt2) { //similar scenario this time if lower team's value is bigger than upper team's.
 									championshipGame.nl.setText(semiFinalGameLeft.nl2.getText());
 									semiFinalGameLeft.setLoserScore(txt1);
 									semiFinalGameLeft.setLoserTeam(semiFinalGameLeft.nl.getText());
@@ -169,13 +193,16 @@ public class Main extends Application {
 								}
 								semiFinalGameLeft.scores.getChildren().remove(2);
 							}
-						} catch (NumberFormatException e) {
+						} catch (NumberFormatException e) {//catches the user exception which shouldnt throw string
 							
 						}
 					}
 				});
 
 				semiFinalGameRight.newbie.setOnAction(new EventHandler<ActionEvent>() {
+					
+					//similar scenario in the above
+					//this time sets the value for lower team in championship
 					@Override
 					public void handle(ActionEvent event) {
 						try { 
@@ -211,6 +238,8 @@ public class Main extends Application {
 					quarterFinalGameRightTwo = new Game(null, null, "TBD");
 					
 					quarterFinalGameLeftOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
+						//similar scenario above
+						//sets the bigger value in to semiFinal Game Left upper team
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
@@ -234,6 +263,8 @@ public class Main extends Application {
 					});
 
 					quarterFinalGameLeftTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
+						//similar scenario above
+						//sets the bigger value in to semiFinal Game Left lower team
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
@@ -258,6 +289,8 @@ public class Main extends Application {
 					});
 
 					quarterFinalGameRightTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
+						//similar scenario above
+						//sets the bigger value in to semiFinal Game Right lower team
 						@Override
 						public void handle(ActionEvent event) {
 							try { 
@@ -284,6 +317,8 @@ public class Main extends Application {
 					quarterFinalGameRightOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
+							//similar scenario above
+							//sets the bigger value in to semiFinal Game Right upper team
 							try { 
 								int txt1 = Integer.parseInt(quarterFinalGameRightOne.t1.getText());
 								int  txt2 = Integer.parseInt(quarterFinalGameRightOne.t2.getText());
@@ -316,6 +351,8 @@ public class Main extends Application {
 						firstRoundGameRightFour = new Game(teams.get(7), teams.get(8), "firstRoundGameRightFour");
 
 						firstRoundGameLeftOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							//similar scenario above
+							//sets the bigger value in to quarterFinal Game Left One upper team
 							@Override
 							public void handle(ActionEvent event) {
 								try { 	
@@ -341,6 +378,8 @@ public class Main extends Application {
 						});
 
 						firstRoundGameLeftTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							//similar scenario above
+							//sets the bigger value in to quarterFinal Game Left One lower team
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
@@ -366,6 +405,8 @@ public class Main extends Application {
 						firstRoundGameLeftThree.newbie.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
+								//similar scenario above
+								//sets the bigger value in to quarterFinal Game Left Two upper team
 								try { 
 									int txt1 = Integer.parseInt(firstRoundGameLeftThree.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameLeftThree.t2.getText());
@@ -389,6 +430,8 @@ public class Main extends Application {
 						firstRoundGameLeftFour.newbie.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
+								//similar scenario above
+								//sets the bigger value in to quarterFinal Game Left Two lower team
 								try { 
 									int txt1 = Integer.parseInt(firstRoundGameLeftFour.t1.getText());
 									int txt2 = Integer.parseInt(firstRoundGameLeftFour.t2.getText());
@@ -410,6 +453,8 @@ public class Main extends Application {
 						});
 
 						firstRoundGameRightOne.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							//similar scenario above
+							//sets the bigger value in to quarterFinal Game Right One upper team
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
@@ -435,7 +480,10 @@ public class Main extends Application {
 						firstRoundGameRightTwo.newbie.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
+								//similar scenario above
+								//sets the bigger value in to quarterFinal Game Right One lower team
 								try { 
+									
 									int txt1 = Integer.parseInt(firstRoundGameRightTwo.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameRightTwo.t2.getText());
 
@@ -456,6 +504,10 @@ public class Main extends Application {
 						});
 
 						firstRoundGameRightThree.newbie.setOnAction(new EventHandler<ActionEvent>() {
+							
+							//similar scenario above
+							//sets the bigger value in to quarterFinal Game Right Two upper team
+							
 							@Override
 							public void handle(ActionEvent event) {
 								try { 
@@ -481,6 +533,10 @@ public class Main extends Application {
 						firstRoundGameRightFour.newbie.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent event) {
+								
+								//similar scenario above
+								//sets the bigger value in to quarterFinal Game Right Two lower team
+								
 								try { 
 									int txt1 = Integer.parseInt(firstRoundGameRightFour.t1.getText());
 									int  txt2 = Integer.parseInt(firstRoundGameRightFour.t2.getText());
@@ -500,7 +556,8 @@ public class Main extends Application {
 								}
 							}
 						});
-
+						
+						//adds the values to the rows to display it on the screen
 						rows.get(1).getChildren().addAll(quarterFinalGameLeftOne.getBox(),
 								quarterFinalGameLeftTwo.getBox());					
 						rows.get(5).getChildren().addAll(quarterFinalGameRightOne.getBox(),
@@ -511,6 +568,7 @@ public class Main extends Application {
 								firstRoundGameRightThree.getBox(),firstRoundGameRightFour.getBox());
 
 					} else {
+						//not > 8
 						quarterFinalGameLeftOne.nl.setText(teams.get(0).getName());
 						quarterFinalGameLeftOne.nl2.setText(teams.get(7).getName());
 						quarterFinalGameRightOne.nl.setText(teams.get(1).getName());
@@ -527,6 +585,7 @@ public class Main extends Application {
 								quarterFinalGameRightTwo.getBox());
 					}
 				} else {
+					//not > 4
 					semiFinalGameLeft.nl.setText(teams.get(0).getName());
 					semiFinalGameLeft.nl2.setText(teams.get(3).getName());
 					semiFinalGameRight.nl.setText(teams.get(1).getName());
@@ -536,6 +595,7 @@ public class Main extends Application {
 					rows.get(4).getChildren().addAll(semiFinalGameRight.getBox());
 				}
 			} else {
+				//not > 2
 				championshipGame.nl.setText(teams.get(0).getName());
 				championshipGame.nl2.setText(teams.get(1).getName());
 
@@ -547,7 +607,7 @@ public class Main extends Application {
 		for(int i = 0; i < rows.size(); i++) {
 			gPane.add(rows.get(i), i, 1);
 		}
-		
+		//displays it on scene
 		Scene scene = new Scene(gPane, Color.BLACK);
 		scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm()); //grab from .css file
 		primaryStage.setScene(scene);
@@ -555,6 +615,8 @@ public class Main extends Application {
 	}
 	
 	public static Stream<String> getWordStream(String filepath) throws IOException {
+		
+		// Returns a stream of trimmed, uppercase lines from the filepath
 		
 		Stream <String> stream = Files.lines(Paths.get(filepath));
 		stream = stream.filter(str->str.trim().length() > 0);
